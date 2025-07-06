@@ -4,6 +4,7 @@ import { FaInstagram, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import image from "../assets/icon.png";
 import { useCardStore } from "../store/cardStore";
+import { supabase } from "../supabaseClient";
 
 const Container = styled.div`
   display: flex;
@@ -277,10 +278,39 @@ const make: React.FC = () => {
         }
         setStep(step + 1);
     };
-    const handleConfirm = () => {
+    
+    const handleConfirm = async () => {
         setCard(form);
+        
+        // DB에 명함 저장
+        try {
+            const { error } = await supabase.from('card').insert([
+                {
+                    u_id: 'user1', // 임시 사용자 ID, 추후 로그인 시스템 구현 시 변경
+                    u_name: form.name,
+                    affiliation: form.aff,
+                    job: form.job,
+                    url1: form.insta,
+                    url2: form.github,
+                    moto: form.quote,
+                    color: 1 // 기본 색상값
+                }
+            ]);
+            
+            if (error) {
+                console.error('명함 저장 실패:', error);
+                alert('명함 저장에 실패했습니다.');
+            } else {
+                console.log('명함이 DB에 성공적으로 저장되었습니다!');
+            }
+        } catch (error) {
+            console.error('명함 저장 중 오류 발생:', error);
+            alert('명함 저장 중 오류가 발생했습니다.');
+        }
+        
         setStep(4);
     };
+    
     const handleCancel = () => {
         resetCard();
         setForm({

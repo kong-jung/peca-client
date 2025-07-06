@@ -12,6 +12,7 @@ interface CardState {
   activityName: string;
   activityPeriod: string;
   activityDesc: string;
+  color: string;
   setCard: (card: Partial<CardState>) => void;
   resetCard: () => void;
 }
@@ -29,10 +30,11 @@ export const useCardStore = create<CardState>()(
       activityName: '',
       activityPeriod: '',
       activityDesc: '',
+      color: '',
       setCard: (card) => set(card),
       resetCard: () => set({
         name: '', aff: '', job: '', quote: '', insta: '', github: '', mail: '',
-        activityName: '', activityPeriod: '', activityDesc: ''
+        activityName: '', activityPeriod: '', activityDesc: '', color: ''
       })
     }),
     {

@@ -139,7 +139,11 @@ const Header: React.FC = () => {
       </Menu>
       <Inter>
         <Bell><FaRegBell /></Bell>
-        <UserIcon><circle /></UserIcon>
+        <UserIcon>
+          <svg width="32" height="32">
+            <circle cx="16" cy="16" r="16" fill="#ccc" />
+          </svg>
+        </UserIcon>
         <User>장인정신</User>
       </Inter>
     </HeaderWrapper>
