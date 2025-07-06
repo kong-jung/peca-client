@@ -114,7 +114,7 @@ const Header: React.FC = () => {
   
   return (
     <HeaderWrapper>
-      <Service>
+      <Service onClick={() => navigate('/')}>
         <img src={icon} alt="icon" style={{ width: 40, height: 40 }} />
         <Name>PECA</Name>
       </Service>
