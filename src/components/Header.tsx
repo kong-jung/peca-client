@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { FaRegBell } from "react-icons/fa";
 import icon from "../assets/icon.png";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Name = styled.p`
     font-size: 32px;
@@ -56,13 +57,19 @@ const Menu = styled.div`
   transform: translateX(-50%);
 `;
 
-const MenuItem = styled.div`
-  color: #D8D8D8;
+const MenuItem = styled.div<{ isActive?: boolean }>`
+  color: ${props => props.isActive ? '#000' : '#D8D8D8'};
   font-size: 18px;
   position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: ${props => props.isActive ? '#000' : '#666'};
+  }
 `;
 
 const Badge = styled.span`
@@ -102,6 +109,9 @@ const UserIcon = styled.span`
 `;
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   return (
     <HeaderWrapper>
       <Service>
@@ -112,13 +122,18 @@ const Header: React.FC = () => {
         <SearchBox placeholder="search" />
       </Main>
       <Menu>
-        <MenuItem>
+        <MenuItem 
+          isActive={location.pathname === '/result'} 
+          onClick={() => navigate('/result')}
+        >
           프로필 <Badge>13</Badge>
         </MenuItem>
-        <MenuItem>
+        <MenuItem isActive={location.pathname === '/groups'}
+        onClick={() => navigate('/groups')}>
           명함 그룹 <Badge>04</Badge>
         </MenuItem>
-        <MenuItem>
+        <MenuItem isActive={location.pathname === '/cards'}
+        onClick={() => navigate('/cards')}>
           명함 <Badge>10</Badge>
         </MenuItem>
       </Menu>
