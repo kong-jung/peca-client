@@ -111,11 +111,6 @@ const CardAff = styled.div`
   color: #e0e0ff;
 `;
 
-const Image = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
 const CardJob = styled.div`
   font-size: 22px;
   font-weight: 700;

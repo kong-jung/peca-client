@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import CardItem, { type CardType, type TagType } from '../components/cardItem';
 import { supabase } from '../supabaseClient';
