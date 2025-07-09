@@ -380,12 +380,12 @@ const make: React.FC = () => {
                     <CardJob>{step < 3 ? form.job || "직책" : job || "직책"}</CardJob>
                     <CardLinksWrap>
                         {(step < 3 ? form.insta : insta) && (
-                            <CardLink href={(step < 3 ? form.insta : insta).startsWith('http') ? (step < 3 ? form.insta : insta) : `https://instagram.com/${step < 3 ? form.insta : insta}`} target="_blank" rel="noopener noreferrer">
+                            <CardLink href={(step < 3 ? form.insta : insta).startsWith('http') ? (step < 3 ? form.insta : insta) : `${step < 3 ? form.insta : insta}`} target="_blank" rel="noopener noreferrer">
                                 <FaInstagram /> 인스타
                             </CardLink>
                         )}
                         {(step < 3 ? form.github : github) && (
-                            <CardLink href={(step < 3 ? form.github : github).startsWith('http') ? (step < 3 ? form.github : github) : `https://github.com/${step < 3 ? form.github : github}`} target="_blank" rel="noopener noreferrer">
+                            <CardLink href={(step < 3 ? form.github : github).startsWith('http') ? (step < 3 ? form.github : github) : `${step < 3 ? form.github : github}`} target="_blank" rel="noopener noreferrer">
                                 <FaGithub /> 깃허브
                             </CardLink>
                         )}
